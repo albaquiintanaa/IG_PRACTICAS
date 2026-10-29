@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f8fa;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden; 
+    padding: 10px;
+  }
+  
+  .contenedor {
+    background: white;
+    padding: 14px 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    max-width: 95vw;
+  }
+  
+  h3 {
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+  
+  h4 {
+    margin: 2px 0 8px 0;
+    color: #666;
+    font-weight: 400;
+    font-size: 0.85rem;
+  }
+  
+  .canvas-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  
+
+  canvas {
+    width: min(82vh, 650px);
+    height: min(82vh, 650px);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    border: 4px solid #2f3640;
+    background-color: #1a1a26;
+    display: block;
+  }
+  
+
+  #cartelFinal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Courier New", monospace;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    display: none;
+    pointer-events: none;
+    text-shadow: 0 0 14px rgba(0, 0, 0, 0.95);
+    z-index: 10;
+    user-select: none;
+  }
+  
+  #inventario {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    width: 54px;
+    height: 54px;
+    background-color: rgba(30, 30, 35, 0.85);
+    border: 3px solid #666;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    user-select: none;
+    z-index: 5;
+    transition: border-color 0.2s ease;
+  }
+  
+  .controles {
+    font-size: 0.82em;
+    color: #555;
+    background-color: #f0f2f5;
+    padding: 6px 16px;
+    border-radius: 8px;
+  }

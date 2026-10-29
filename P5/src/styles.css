@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f8fa; 
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow: auto; 
+    padding: 20px;
+  }
+  
+  .contenedor {
+    background: white;
+    padding: 18px 28px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    max-width: 95vw;
+    position: relative;
+  }
+  
+  h3 {
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  
+  h4 {
+    margin: 4px 0 12px 0;
+    color: #666;
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+  
+  .canvas-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  
+  canvas {
+    width: 720px; 
+    max-width: 100%; 
+    height: 540px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    border: 4px solid #2f3640; 
+    background-color: #050508; 
+    display: block;
+  }
+  
+  .controles {
+    font-size: 0.85em;
+    color: #555;
+    background-color: #f0f2f5;
+    padding: 8px 20px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+  }
+  
+
+  #gui-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .dg.main {
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+  }
