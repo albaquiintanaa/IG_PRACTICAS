@@ -1,13 +1,15 @@
 # Práctica 6 - Sistema Planetario Interactivo 
 
----
-
 ## [Alba Ramos Quintana](https://github.com/albaquiintanaa)
 
----
+<p align="center">
+  <img src="./docs/video.gif" alt="Vídeo de demostración">
+</p>
 
 
-*Enlace al vídeo de demostración de la aplicación.*
+<p align="center">
+  <a href="https://youtu.be/sZ4i7rHd4BQ"><em>Enlace al vídeo de demostración de la aplicación</em></a>
+</p>
 
 Explora el Sistema Solar en una experiencia 3D interactiva: recorre los planetas y sus lunas, cambia entre la vista orbital y el pilotaje de una nave, consulta información de cada astro y activa órbitas y constelaciones. Además, podrás acelerar el paso del tiempo y crear planetas para descubrir cómo influye su distancia al Sol en su clima y habitabilidad. ¡Tu aventura espacial empieza aquí!
 
@@ -47,13 +49,13 @@ El simulador cuenta con una interfaz autodescriptiva que despliega notificacione
 ### Vista Orbital
 Es el modo principal por defecto, diseñado como una vista panorámica en **tercera persona** a gran escala. Permite observar el sistema solar en su totalidad desde el exterior, contemplando simultáneamente todos los planetas junto a sus satélites y el cinturón de asteroides. A través de este modo, el usuario puede navegar libremente con el ratón para rotar alrededor del el Sol, moverse en los ejes X e Y, y aplicar zoom.
 
-![Vista orbital del sistema solar](./img/vista-orbital.png)
+![Vista orbital del sistema solar](./docs/vista-orbital.png)
 
 ### Pilotar Nave
 Este modo ofrece una experiencia diferente mediante un efecto de **primera persona** desde la cabina de una nave espacial (modelada detalladamente con primitivas geométricas, cristales translúcidos y luces dinámicas). Haciendo uso de la herramienta `FlyControls`, el usuario tiene total libertad para pilotar, girar y desplazarse por el vacío tridimensional del espacio. 
 - La característica más destacada de este modo es la **exploración interactiva**: al navegar por el sistema y acercarte lo suficiente a cualquier planeta o estrella, el radar de a bordo lo detecta, permitiéndote abrir un panel con información detallado, características técnicas y curiosidades sobre el astro que estás visitando.
 
-![Pilotaje de la nave espacial](./img/pilotar-nave.png)
+![Pilotaje de la nave espacial](./docs/pilotar-nave.png)
 
 ### Modo Creador 
 Esta funcionalidad transforma el simulador en un laboratorio interactivo de astrofísica. Utilizando la herramienta `TransformControls` de Three.js, el usuario tiene el poder de **añadir astros completamente nuevos, arrastrarlos libremente por el espacio tridimensional y eliminarlos** de la escena cuando lo desee.
@@ -83,7 +85,7 @@ transformControl.addEventListener('change', function () {
 });
 ```
 
-![Modo creador de astros](./img/modo-creador.png)
+![Modo creador de astros](./docs/modo-creador.png)
 
 
 ### Interfaz y Controles (HUD)
@@ -92,12 +94,12 @@ En la parte superior se encuentran herramientas clave para interactuar con la es
 
 * **Visor de Astros y Botón "Ver Info":** Un carrusel permite navegar entre cuerpos celestes. Al hacer clic en "Ver Info", la simulación entra en *Modo Cinemático*, anclando la cámara al planeta y desplegando un panel informativo (HUD) con datos inyectados vía `userData`. Para cerrar el panel, puedes pulsar «Cerrar», volver a pulsar «Ver Info» o presionar la tecla **Q**.
 
-![Ver Info](./img/info.png)
+![Ver Info](./docs/info.png)
 
 
 * **Botón "Órbitas":** Dibuja u oculta las trayectorias elípticas iterando sobre un array de líneas instanciadas, permitiendo visualizar de forma clara tanto las órbitas de los planetas alrededor del Sol como las de los satélites alrededor de sus respectivos planetas.
 
-![Órbitas](./img/orbitas.png)
+![Órbitas](./docs/orbitas.png)
 
 
 * **Botón "Constelaciones" (★):** Enciende o apaga el firmamento estelar geométrico, revelando las constelaciones más importantes del cielo nocturno junto con la de Piscis.
@@ -105,7 +107,7 @@ En la parte superior se encuentran herramientas clave para interactuar con la es
 > 💡 **Dato:** Se ha incluido la constelación de Piscis como un detalle personal en la práctica, ya que es mi signo del zodiaco y me hacía especial ilusión añadirla al proyecto.
 
 
-![Constelaciones](./img/constelaciones.png)
+![Constelaciones](./docs/constelaciones.png)
 
 
 * **Acelerador Temporal:** Un control deslizante que multiplica la variable global de tiempo para acelerar, ralentizar o pausar por completo el universo *(tiempo/segundo)*. La simulación arranca por defecto en **tiempo real**, y al desplazar el deslizador aparece un botón dinámico de reinicio (↺) que permite al usuario restaurar la velocidad normal con un solo clic.
@@ -236,7 +238,7 @@ El fotorrealismo se consigue combinando `PCFSoftShadowMap` (para sombras difumin
 
 * **PointLight Central (Sol):** Proyecta sombras direccionales masivas (`castShadow = true`, mapa 2048x2048), logrando que los planetas den sombra a sus propios anillos o lunas.
 
-![Sombras](./img/sombras.png)
+![Sombras](./docs/sombras.png)
 
 *Imagen en la que se aprecian las sombras de Saturno, de la Tierra al pasar y del cinturón de asteroides.*
 
