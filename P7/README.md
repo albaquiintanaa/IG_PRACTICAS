@@ -2,6 +2,15 @@
 
 ## [Alba Ramos Quintana](https://github.com/albaquiintanaa)
 
+<p align="center">
+  <img src="./docs/video.gif" alt="Vídeo de demostración">
+</p>
+
+
+<p align="center">
+  <a href="https://youtu.be/SxPPIDThJQE"><em>Enlace al vídeo de demostración de la aplicación</em></a>
+</p>
+
 Revive y analiza la evolución de los devastadores incendios forestales que asolaron Gran Canaria en agosto de 2019 (Artenara, Cazadores y Valleseco). Esta visualización 3D interactiva combina topografía real, datos satelitales de áreas quemadas (Copernicus EMS), focos de calor detectados por satélite (NASA FIRMS) y la orografía urbana de los municipios afectados (OpenStreetMap). Observa cómo el fuego avanza sobre el relieve con el paso de los días y las noches.
 
 **Enlace a CodeSandbox:** [Abrir en CodeSandbox](https://codesandbox.io/p/sandbox/github/albaquiintanaa/IG_PRACTICAS/tree/main/P7)
@@ -132,12 +141,43 @@ Se han cargado los polígonos GeoJSON de los tres focos. El terreno se dibuja it
 | fuego_valleseco_4_monit02.geojson | 22/08 11:23 | SPOT7 | 8529,3 |
 | fuego_valleseco_5_grading.geojson | 24/08 11:08 | SPOT7 | 9711,2 |
 
+Para que solo brille lo que ha ardido desde la imagen anterior, se pinta el perímetro actual en naranja y encima el anterior en ceniza:
+
+```javascript
+// Zona nueva desde el perímetro anterior: naranja incandescente
+ctx.shadowColor = "rgba(255, 120, 0, 0.9)";
+ctx.shadowBlur = 12;
+RellenaPerimetro(actual, "rgba(255, 95, 20, 0.9)");
+// Zona ya quemada antes: ceniza (se pinta encima, así solo brilla lo nuevo)
+let j = i - 1;
+while (j >= 0 && inc.perimetros[j].aproximado) j--; // se salta el de 300 m
+if (j >= 0) RellenaPerimetro(inc.perimetros[j], "rgba(35, 25, 22, 0.92)");
+```
+
 > 💡 **Nota:** La primera medición (*First Estimate*) se hizo con el satélite Sentinel-3 (resolución de 300 m), por lo que su contorno es aproximado y se dibuja difuminado. Al pasar a los satélites SPOT 6/7 (mayor resolución), la precisión del contorno aumenta y genera una curva visual de crecimiento impactante (8.322 → 8.529 ha), terminando con las 9.711 ha del *Grading* final.
 
 ### 2. Focos de Calor Activos (NASA FIRMS)
 
 Se representan mediante un enjambre de partículas (Sprites) utilizando `THREE.AdditiveBlending`.
 Cuando se detecta un foco, aparece como un destello blanco/amarillo. Durante las siguientes 36 horas reduce su tamaño y pasa de naranja a rojo oscuro; después queda como un rescoldo tenue y desaparece a las 72 horas, simulando brasas reales.
+
+```javascript
+const horas = (E.fechaActual - f.fecha) / 3600000; // horas desde la detección
+if (horas < horasDestello) {
+  // Destello: grande, casi blanco
+  const k = 1 - horas / horasDestello;
+  escala = f.tam * (1 + 1.5 * k);
+  tono = 0.13; luz = 0.6 + 0.3 * k; opacidad = 1;
+} else if (horas < horasBrasa) {
+  // Brasa: de naranja a rojo oscuro, cada vez más pequeña
+  const d = (horas - horasDestello) / (horasBrasa - horasDestello);
+  escala = f.tam * (1 - 0.6 * d);
+  tono = 0.08 * (1 - d); luz = 0.55 - 0.25 * d; opacidad = 0.95 * (1 - d) + 0.15;
+}
+opacidad *= 0.8 + 0.2 * Math.sin(t * 9 + f.fase); // parpadeo, como una llama
+```
+
+- El tamaño de cada brasa depende de la potencia radiativa del fuego (FRP): `tam = 0.07 * (0.6 + log10(1 + frp) / 2.7)`.
 
 ---
 
@@ -146,6 +186,18 @@ Cuando se detecta un foco, aparece como un destello blanco/amarillo. Durante las
 * **Atmósfera:** Un `THREE.Fog` envuelve la isla fusionándose con el color del mar de fondo, eliminando los cortes abruptos de la geometría (horizonte infinito) junto con un plano de mar grande bajo el mapa del mismo color.
 * **El Sol (`DirectionalLight`):** Vinculado al reloj interno, describe un arco para generar un amanecer y atardecer orgánico, acentuando el volumen de los picos.
 * **El Pulso del Fuego (`PointLight`):** Se ha colocado una luz dinámica y omnidireccional naranja que calcula su posición como la *media de las coordenadas de todos los focos activos* en ese momento. A través de una función senoidal, la luz parpadea levemente, simulando el latido del frente de las llamas sobre los pueblos.
+
+```javascript
+// Hora local de Canarias en agosto (UTC+1)
+const hora = (E.fechaActual.getUTCHours() + 1 + E.fechaActual.getUTCMinutes() / 60) % 24;
+// Amanecer ~7:30, atardecer ~20:45 -> ángulo del sol de 0 a PI
+const ang = ((hora - 7.5) / 13.25) * Math.PI;
+const dia = Math.max(0, Math.sin(ang)); // 0 de noche, 1 a mediodía
+E.sol.position.set(4 * Math.cos(ang), 1.5, 0.5 + 4 * Math.max(0.05, Math.sin(ang)));
+E.sol.intensity = 0.1 + 0.8 * dia;
+// La luz del fuego se nota más de noche
+E.luzFuego.intensity = objetivo * (1 - 0.6 * dia) * parpadeo;
+```
 
 ---
 
