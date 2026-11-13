@@ -8,7 +8,7 @@
 
 
 <p align="center">
-  <a href="https://youtu.be/SxPPIDThJQE"><em>Enlace al vídeo de demostración de la aplicación</em></a>
+  <a href="https://youtu.be/TvS6-CPiZfs"><em>Enlace al vídeo de demostración de la aplicación</em></a>
 </p>
 
 Revive y analiza la evolución de los devastadores incendios forestales que asolaron Gran Canaria en agosto de 2019 (Artenara, Cazadores y Valleseco). Esta visualización 3D interactiva combina topografía real, datos satelitales de áreas quemadas (Copernicus EMS), focos de calor detectados por satélite (NASA FIRMS) y la orografía urbana de los municipios afectados (OpenStreetMap). Observa cómo el fuego avanza sobre el relieve con el paso de los días y las noches.
