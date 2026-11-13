@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>Práctica 7 IG - Incendios de Gran Canaria 2019 - Alba Ramos Quintana</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <div id="panel-superior">
+      <div id="titulo">
+        INCENDIOS DE GRAN CANARIA
+        <span class="subtitulo">Agosto 2019</span>
+      </div>
+
+      <div class="botones-fila">
+        <div id="selector-hud" class="btn-fuego" style="display: flex; align-items: center; gap: 10px;">
+          <button id="btnAnterior" class="flecha">◀</button>
+          <span id="nombreZonaSlider" class="nombre-zona">GRAN CANARIA</span>
+          <button id="btnSiguiente" class="flecha">▶</button>
+          <button id="btnVerInfo" class="btn-fuego" style="padding: 2px 8px; font-size: 11px; margin-left: 5px;">Ver Info</button>
+        </div>
+      </div>
+
+      <div class="botones-fila">
+        <button type="button" class="btn-fuego btn-capa activo" id="btnBrasas" title="Focos de calor NASA FIRMS">Focos</button>
+        <button type="button" class="btn-fuego btn-capa activo" id="btnOSM" title="Carreteras y edificios de OpenStreetMap">Carreteras</button>
+        <button type="button" class="btn-fuego btn-capa" id="btnPicos" title="Picos de referencia">▲ Picos</button>
+      </div>
+    </div>
+
+    <!-- LEYENDA -->
+    <div id="panel-leyenda">
+      <div class="leyenda-titulo">LEYENDA</div>
+      <div class="leyenda-item"><span class="muestra brasa"></span> Foco detectado por satélite</div>
+      <div class="leyenda-item"><span class="muestra linea"></span> Perímetro activo</div>
+      <div class="leyenda-item"><span class="muestra" style="background: rgb(255, 95, 20);"></span> Zona quemada nueva</div>
+      <div class="leyenda-item"><span class="muestra" style="background: rgb(35, 25, 22);"></span> Zona ya quemada</div>
+      <div class="leyenda-subtitulo">Daños (24 ago)</div>
+      <div class="leyenda-item"><span class="muestra" style="background: rgb(120, 10, 5);"></span> Destruido</div>
+      <div class="leyenda-item"><span class="muestra" style="background: rgb(205, 70, 15);"></span> Dañado</div>
+      <div class="leyenda-item"><span class="muestra" style="background: rgb(235, 170, 40);"></span> Posiblemente dañado</div>
+      <div class="leyenda-fuente">Datos: Copernicus EMS · NASA FIRMS · OpenStreetMap</div>
+    </div>
+
+    <!-- CONTROLES INFERIORES -->
+    <div id="hud-controles">
+      <label for="sliderTiempo">
+        <button id="btnPlay" title="Pausa / Reproducir">⏸</button>
+        Línea temporal: <span id="valorTiempo" class="valor">10 ago 2019</span>
+        <button id="btnReset" title="Volver al inicio">↺</button>
+      </label>
+      <input type="range" id="sliderTiempo" class="rango" min="0" max="21600" step="20" value="0" list="marcasTiempo" />
+      <datalist id="marcasTiempo"></datalist>
+
+      <div class="fila-controles">
+        <label for="sliderVelocidad">
+          Velocidad: <span id="valorVelocidad" class="valor">x0,1</span>
+        </label>
+        <input type="range" id="sliderVelocidad" class="rango rango-corto" min="0.1" max="1" step="0.05" value="0.1" />
+      </div>
+    </div>
+
+    <!-- FICHA DE CADA INCENDIO -->
+    <div id="panel-info" style="display: none;">
+      <h2 id="info-titulo">INCENDIO</h2>
+      <div id="info-desc"></div>
+      <button id="btnCerrarInfo" class="btn-fuego" style="margin-top: 20px; width: 100%;">Cerrar</button>
+    </div>
+
+    <!-- AVISO DE CONTROLES -->
+    <div id="toast-controles" class="toast-controles">
+      <h3 id="toast-titulo">CONTROLES</h3>
+      <p id="toast-desc">Controles</p>
+    </div>
+
+    <!--S8-->
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

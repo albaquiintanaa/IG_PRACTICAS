@@ -1,0 +1,373 @@
+   html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #05080d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* ----------------- TÍTULO ----------------- */
+  
+  #titulo {
+    color: #ff8c32;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 106, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #titulo .subtitulo {
+    color: #cccccc;
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: none;
+  }
+  
+  /* ----------------- PANEL SUPERIOR ----------------- */
+  
+  #panel-superior {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+  }
+  
+  .botones-fila {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn-fuego {
+    background: rgba(20, 10, 6, 0.85);
+    color: #999999;
+    border: 1px solid rgba(255, 120, 40, 0.3);
+    padding: 8px 16px;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    outline: none;
+  }
+  
+  .btn-fuego:hover {
+    background: rgba(255, 120, 40, 0.2);
+    color: #ffffff;
+  }
+  
+  /* Botones de capas (Focos, Carreteras, Picos): más pequeños */
+  .btn-capa {
+    padding: 6px 13px;
+    font-size: 12px;
+  }
+  
+  .btn-fuego.activo {
+    background: rgba(255, 106, 0, 0.25);
+    color: #ffffff;
+    border-color: #ff8c32;
+    box-shadow: 0 0 10px rgba(255, 106, 0, 0.4);
+  }
+  
+  .flecha {
+    background: transparent;
+    border: none;
+    color: #ff8c32;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .nombre-zona {
+    color: #ff8c32;
+    font-weight: bold;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  /* ----------------- LEYENDA ----------------- */
+  
+  #panel-leyenda {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(20, 10, 6, 0.85);
+    border: 1px solid rgba(255, 120, 40, 0.3);
+    padding: 14px 18px;
+    border-radius: 8px;
+    color: #dddddd;
+    font-size: 12px;
+    z-index: 10;
+    min-width: 200px;
+  }
+  
+  .leyenda-titulo {
+    color: #ff8c32;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  
+  .leyenda-subtitulo {
+    color: #ffc266;
+    margin: 10px 0 4px 0;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  
+  .leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0;
+  }
+  
+  .muestra {
+    display: inline-block;
+    width: 16px;
+    height: 12px;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  .muestra.brasa {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 0%, #ffaa33 45%, rgba(255, 106, 0, 0) 100%);
+    border: none;
+    box-shadow: 0 0 6px #ff8c32;
+  }
+  
+  .muestra.linea {
+    height: 3px;
+    background: #ff6a00;
+    border: none;
+    box-shadow: 0 0 4px #ff6a00;
+  }
+  
+  .leyenda-fuente {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #553322;
+    font-size: 10px;
+    color: #999999;
+  }
+  
+  /* ----------------- CONTROLES INFERIORES ----------------- */
+  
+  #hud-controles {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    background: rgba(20, 10, 6, 0.85);
+    border: 1px solid rgba(255, 120, 40, 0.3);
+    padding: 10px 18px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    z-index: 10;
+    color: #ffffff;
+  }
+  
+  #hud-controles label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .fila-controles {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .valor {
+    color: #ff8c32;
+    font-weight: bold;
+  }
+  
+  #btnPlay,
+  #btnReset {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    color: #ffffff;
+    text-shadow: 0 0 5px #ff6a00;
+  }
+  
+  #btnReset:hover {
+    transform: rotate(-180deg);
+    color: #ff8c32;
+  }
+  
+  #btnPlay:hover {
+    color: #ff8c32;
+  }
+  
+  input[type=range].rango {
+    -webkit-appearance: none;
+    width: 340px;
+    background: transparent;
+  }
+  
+  input[type=range].rango-corto {
+    width: 120px;
+  }
+  
+  input[type=range].rango:focus {
+    outline: none;
+  }
+  
+  input[type=range].rango::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    /* De verde (antes) a naranja y rojo (fuego) */
+    background: linear-gradient(90deg, #4e6238, #ff8c32 55%, #780a05);
+    border-radius: 3px;
+  }
+  
+  input[type=range].rango::-webkit-slider-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #ff6a00;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+    box-shadow: 0 0 10px rgba(255, 106, 0, 0.9);
+    border: 2px solid #fff;
+  }
+  
+  input[type=range].rango::-moz-range-track {
+    height: 6px;
+    background: linear-gradient(90deg, #4e6238, #ff8c32 55%, #780a05);
+    border-radius: 3px;
+  }
+  
+  input[type=range].rango::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: #ff6a00;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(255, 106, 0, 0.9);
+  }
+  
+  /* ----------------- FICHA DEL INCENDIO ----------------- */
+  
+  #panel-info {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    background: rgba(20, 10, 6, 0.88);
+    border: 1px solid rgba(255, 120, 40, 0.5);
+    box-shadow: 0 0 30px rgba(255, 106, 0, 0.2);
+    padding: 30px;
+    border-radius: 12px;
+    color: white;
+    width: 340px;
+    z-index: 30;
+    backdrop-filter: blur(5px);
+  }
+  
+  #panel-info h2 {
+    margin-top: 0;
+    color: #ff8c32;
+    text-transform: uppercase;
+  }
+  
+  #info-desc {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  #panel-info ul {
+    padding-left: 20px;
+    margin: 10px 0 10px 0;
+  }
+  
+  #panel-info li {
+    margin-bottom: 10px;
+    color: #cccccc;
+  }
+  
+  #panel-info strong {
+    color: #ffffff;
+  }
+  
+  #btnVerInfo.activo {
+    background: rgba(255, 106, 0, 0.5);
+    color: #ffffff;
+    border-color: #ff8c32;
+    box-shadow: 0 0 10px rgba(255, 106, 0, 0.8);
+  }
+  
+  /* ----------------- AVISO DE CONTROLES ----------------- */
+  
+  .toast-controles {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    background: rgba(20, 10, 6, 0.88);
+    border: 1px solid rgba(255, 120, 40, 0.5);
+    box-shadow: 0 0 20px rgba(255, 106, 0, 0.2);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-align: left;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    pointer-events: none;
+  
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  
+  .toast-controles.mostrar {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .toast-controles h3 {
+    margin: 0 0 12px 0;
+    color: #ff8c32;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  
+  .toast-controles p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #cccccc;
+  }
+  
+  .tecla {
+    background: rgba(226, 224, 224, 0.39);
+    border: 1px solid #555;
+    border-bottom: 2px solid #444;
+    border-radius: 4px;
+    padding: 2px 6px;
+    color: #2a1206;
+    font-family: monospace;
+    font-weight: bold;
+    margin: 0 2px;
+  }
