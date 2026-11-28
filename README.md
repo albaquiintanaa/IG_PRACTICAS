@@ -24,7 +24,7 @@ Prácticas de la asignatura "_Informática Gráfica_"
 | `06` | Sistema Planetario Interactivo con Three.js: vista orbital, pilotaje de nave y modo creador de planetas | [![P6](https://img.shields.io/badge/Ver-P6-2ea44f?style=flat-square&logo=github)](https://github.com/albaquiintanaa/IG_PRACTICAS/tree/main/P6) |
 | `07` | Incendios de Gran Canaria (agosto 2019): visualización 3D con topografía real y datos satelitales | [![P7](https://img.shields.io/badge/Ver-P7-2ea44f?style=flat-square&logo=github)](https://github.com/albaquiintanaa/IG_PRACTICAS/tree/main/P7) |
 | `08` | Shaders: efectos de fragment shader (glitch, gotas de agua con ranita y extras aplicados al Sistema Planetario) | [![P8](https://img.shields.io/badge/Ver-P8-2ea44f?style=flat-square&logo=github)](https://github.com/albaquiintanaa/IG_PRACTICAS/tree/main/P8) |
-| `09` | Próximamente | ![Pendiente](https://img.shields.io/badge/Estado-Pendiente-lightgrey?style=flat-square) |
+| `09` | El Taller de Juguetes a Medianoche: animación con tween.js y simulación física con ammo.js en Three.js | [![P9](https://img.shields.io/badge/Ver-P9-2ea44f?style=flat-square&logo=github)](https://github.com/albaquiintanaa/IG_PRACTICAS/tree/main/P9) |
 
 ---
 
